@@ -1,8 +1,8 @@
-FROM node:current-alpine as builder
+FROM node:16-alpine as builder
 
 WORKDIR /usr/src/app/client
 
-COPY ["package*.json","."]
+COPY ["package*.json","./"]
 
 RUN npm ci
 
@@ -10,7 +10,7 @@ COPY [".", "."]
 
 RUN npm run build
 
-FROM node:current-alpine
+FROM node:16-alpine
 
 WORKDIR /usr/src/app/client
 
