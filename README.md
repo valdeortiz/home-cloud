@@ -1,5 +1,6 @@
 # Home Cloud
 
+
 *Host your own cloud at home*
 
 #### Table of Contents
@@ -16,6 +17,25 @@
     - [Frontend](#frontend-1)
   - [Docker (Linux)](#docker-linux-1)
 
+
+## INSTALL SERVICE
+
+Copiar los archivos *.service a la carpeta /usr/lib/systemd/system/
+ejemplo: /usr/lib/systemd/system/driveHome.service
+
+Ejecutar
+Agregamos ambos servicios al systemd
+```bash
+systemctl daemon-reload
+```
+Levantar el servicio de home-cloud
+```bash
+systemctl start driveHome.service
+```
+Para que el servicio se levanta cada vez que se reinicia
+```bash
+systemctl enable driveHome.service
+```
 
 ## Development Setup
 

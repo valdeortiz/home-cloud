@@ -1,0 +1,27 @@
+[Unit]
+Description=Almacenamiento propio
+Before=multi-user.target
+Before=shutdown.target
+After=local-fs.target
+After=remote-fs.target
+After=network-online.target
+After=systemd-journald-dev-log.socket
+Wants=network-online.target
+Conflicts=shutdown.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Restart=on-failure
+RestartSec=3
+Type=simple
+TimeoutSec=5min
+KillMode=mixed
+WorkingDirectory=/home/vrunner/home-cloud
+[Service]
+Environment=HOME_CLOUD_STORAGE="/media/compartidoRed"
+ExecStart=/usr/local/bin/docker-compose up
+ExecStop=/usr/local/bin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target
